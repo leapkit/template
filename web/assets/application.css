@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-primary {
+    @apply border-2 border-cyan-400 bg-cyan-400 p-2 px-4 rounded-lg text-white hover:bg-cyan-500 flex flex-row;
+}
+
+.btn-modal {
+    @apply border-2 border-purple-500 bg-purple-500 p-2 px-4 rounded-lg text-white hover:bg-purple-600 flex flex-row;
+}
+
+.btn-basic {
+    @apply bg-white border-2 p-2 px-4 rounded-lg hover:bg-gray-50 flex flex-row items-center gap-2;
+}
+
+.btn-danger {
+    @apply cursor-pointer rounded-lg border border-red-500 bg-white px-4 py-2 text-red-700 font-bold;
+}
+
+.class_checkbox[type='checkbox']:checked{
+    border-color: #22CCEE !important;
+    border-width: 1.5px;
+    background: url("/public/check.svg") no-repeat scroll 0 0 transparent;
+    background-size: 12px;
+    background-position: center;
+    background-color: #ECFDFF;
+}
+
+.custom-radio-btn input:checked + .check-mark{
+    display: inline-block !important;
+}
+
+.field-container {
+    @apply flex flex-col mb-2;
+}
+.field-label {
+    padding-bottom: 8px !important;
+}
+
+.field-container label {
+    @apply text-gray-700 font-medium text-sm;
+}
+
+.field-container .field input {
+    @apply block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:leading-6;
+}
+
+.field-container .field textarea {
+    @apply block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:leading-6;
+}
+
+.field-container .field select {
+    @apply block w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:leading-6;
+}
+
+
+.field-error {
+    @apply text-red-500 text-sm;
+}
+
+.field-container.has-error .field input{
+    @apply !ring-red-500 mb-1 !border-[4px] border-red-200 focus:!border-red-200 focus:ring-inset;
+}
+
+.field-container.has-error .field textarea{
+    @apply !ring-red-500 mb-1 !border-[4px] border-red-200 focus:!border-red-200 focus:ring-inset;
+}
+
+.field-container.has-error .field select{
+    @apply !ring-red-500 mb-1 !border-[4px] border-red-200 focus:!border-red-200 focus:ring-inset;
+}
+
+div:where(.swal2-container).swal2-backdrop-show, div:where(.swal2-container).swal2-noanimation {
+    background: rgba(52, 64, 84, 0.70) !important;
+    backdrop-filter: blur(8px);
+}
+div:where(.swal2-container) .swal2-html-container{
+    text-align: left !important;
+    margin-top: 8px !important;
+    font-weight: 400 !important;
+    font-size: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title){
+    text-align: left !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-popup){
+    border-radius: 12px !important; 
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 10px !important;
+    padding-bottom: 24px !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-close){
+    width: 15px !important;
+    height: 15px !important;
+    margin-top: 17px !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-close):hover{
+    color: #b7b5b5 !important;
+    background: rgba(0,0,0,0) !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-actions){
+    display: flex !important;
+}
+
+.choice_input {
+    &:focus {
+        --tw-ring-color: #ffffff;
+    }
+}
+
+.modal-container {
+    background: rgba(52, 64, 84, 0.70) !important;
+    backdrop-filter: blur(8px);
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade1 {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.fade2 {
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.h-minus{
+    min-height: calc(100vh - 300px);
+}
+
+.document-container-height{
+    height: calc(100vh - 290px);
+}
+
+.signers-list-height{
+    max-height: calc(100vh - 530px);
+}
+
+.sign-view-container-height{
+    height: calc(100vh - 150px);
+}
+
+.wrapper {
+    position: relative;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.signature-pad {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.signature-text {
+    font-family: Dancing Script;
+    @apply w-full rounded-md border-0 py-2 text-gray-900 shadow-sm ring-1 ring-white focus:ring-white ring-inset;
+}
+
+.box-shadow-left {
+    box-shadow: -10px 0px 10px -10px rgba(219, 219, 219, 0.5);
+}
