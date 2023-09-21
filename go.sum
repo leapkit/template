@@ -57,8 +57,8 @@ github.com/microcosm-cc/bluemonday v1.0.20/go.mod h1:yfBmMi8mxvaZut3Yytv+jTXRY8m
 github.com/microcosm-cc/bluemonday v1.0.22/go.mod h1:ytNkv4RrDrLJ2pqlsSI46O6IVXmZOBBD4SaJyDwwTkM=
 github.com/microcosm-cc/bluemonday v1.0.25 h1:4NEwSfiJ+Wva0VxN5B8OwMicaJvD8r9tlJWm9rtloEg=
 github.com/microcosm-cc/bluemonday v1.0.25/go.mod h1:ZIOjCQp1OrzBBPIJmfX4qDYFuhU02nx4bn030ixfHLE=
-github.com/paganotoni/tailo v1.0.0 h1:sdjMcuN+zz+ShdHD1/w1aJimvqnIgF9TzOR+JIRI31c=
-github.com/paganotoni/tailo v1.0.0/go.mod h1:fLLQjHafW30Qqf+Rm6JUrUUDVmzkzjwQTf0nQxmVadY=
+github.com/paganotoni/tailo v1.0.1 h1:cy4u1qX4IkreOVLbshsD79VTbrydV3o66GsfpGPLsEs=
+github.com/paganotoni/tailo v1.0.1/go.mod h1:fLLQjHafW30Qqf+Rm6JUrUUDVmzkzjwQTf0nQxmVadY=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/sergi/go-diff v1.2.0/go.mod h1:STckp+ISIX8hZLjrqAeVduY0gWCT9IjLuqbuNXdaHfM=

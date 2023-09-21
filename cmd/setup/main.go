@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/template/config"
-	"github.com/leapkit/template/postgres"
+	"github.com/leapkit/template/internal/config"
+	"github.com/leapkit/template/internal/postgres"
 
 	"github.com/paganotoni/tailo"
 

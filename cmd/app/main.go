@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/leapkit/template/web"
+	"github.com/leapkit/template/internal/web"
 )
 
 func main() {
@@ -13,7 +13,7 @@ func main() {
 	// }
 
 	server := web.NewServer(
-		"Jumpkit",
+		"LeapKit",
 
 		// Services we want to be set in the context
 	)
