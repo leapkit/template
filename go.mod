@@ -6,8 +6,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/gobuffalo/plush/v4 v4.1.19
 	github.com/gorilla/sessions v1.2.1
-	github.com/joho/godotenv v1.5.1
-	github.com/leapkit/core v1.0.0
+	github.com/leapkit/core v1.0.1
 	github.com/lib/pq v1.10.9
 	github.com/paganotoni/tailo v1.0.1
 )
@@ -26,6 +25,7 @@ require (
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/jmoiron/sqlx v1.3.5 // indirect
+	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.25 // indirect
 	github.com/sergi/go-diff v1.3.1 // indirect
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d // indirect

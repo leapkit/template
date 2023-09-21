@@ -5,28 +5,25 @@
 package config
 
 import (
-	"sync"
+	"github.com/leapkit/core/envor"
 )
 
 var (
-	// oncer for the config loading
-	loadOnce sync.Once
-
 	// DatabaseURL to connect and interact with our database instance.
-	DatabaseURL = envOr("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/app?sslmode=disable")
+	DatabaseURL = envor.Get("DATABASE_URL", "postgres://postgres:postgres@localhost:5432/app?sslmode=disable")
 
 	// Environment in which the application is running, this is useful
 	// to determine the way we'll run the application, for example, if
 	// we're running in production we might want to disable debug mode.
-	Environment = envOr("GO_ENV", "development")
+	Environment = envor.Get("GO_ENV", "development")
 
 	// Port in which the web application listens on.
-	Port = envOr("PORT", "3000")
+	Port = envor.Get("PORT", "3000")
+
+	// SessionSecret is the secret used to sign the session cookies.
+	SessionSecret = envor.Get("SESSION_SECRET", "d720c059-9664-4980-8169-1158e167ae57")
+	SessionName   = envor.Get("SESSION_NAME", "leapkit_session")
 
 	GlovesExtensionsToWatch = []string{".go", ".env", ".json", ".html", ".js"}
 	GlovesExcludePaths      = []string{}
-
-	// SessionSecret is the secret used to sign the session cookies.
-	SessionSecret = envOr("SESSION_SECRET", "d720c059-9664-4980-8169-1158e167ae57")
-	SessionName   = envOr("SESSION_NAME", "leapkit_session")
 )
