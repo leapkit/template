@@ -16,7 +16,7 @@ var (
 	// files in the public folder.
 	Folder = mdfs.New(
 		files,
-		filepath.Join("web", "public"),
+		filepath.Join("internal", "web", "public"),
 		config.Environment,
 	)
 )

@@ -3,6 +3,7 @@ package web
 import (
 	"embed"
 	"net/http"
+	"path"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -21,7 +22,11 @@ import (
 var (
 	//go:embed **/*.html
 	tmpls     embed.FS
-	templates = mdfs.New(tmpls, "web", config.Environment)
+	templates = mdfs.New(
+		tmpls,
+		path.Join("internal", "web"),
+		config.Environment,
+	)
 
 	//sessions store
 	store = sessions.NewCookieStore([]byte(config.SessionSecret))
