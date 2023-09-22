@@ -6,7 +6,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.10
 	github.com/gobuffalo/plush/v4 v4.1.19
 	github.com/gorilla/sessions v1.2.1
-	github.com/leapkit/core v1.0.1
+	github.com/leapkit/core v1.0.2
 	github.com/lib/pq v1.10.9
 	github.com/paganotoni/tailo v1.0.1
 )

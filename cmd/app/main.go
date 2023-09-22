@@ -3,23 +3,23 @@ package main
 import (
 	"fmt"
 
+	"github.com/leapkit/core/server"
 	"github.com/leapkit/template/internal/web"
 )
 
 func main() {
-	// conn, err := postgres.Connection()
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	server := web.NewServer(
+	s := server.New(
 		"LeapKit",
 
-		// Services we want to be set in the context
+		// Routes are defined in internal/web/routes.go
+		// we pass these to the newly created server
+		// as an option.
+		server.WithRoutesFn(web.Routes),
+
+		// Add any other options here.
 	)
 
-	err := server.Start()
-	if err != nil {
+	if err := s.Start(); err != nil {
 		fmt.Println(err)
 	}
 }
