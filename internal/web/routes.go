@@ -47,7 +47,7 @@ func Routes(r *server.Instance) {
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.RequestID)
 
-	// Custom General Middleware
+	// LeapKit Middleware
 	r.Use(session.InCtx(store, config.SessionName))
 	r.Use(render.InCtx(renderer))
 	r.Use(session.AddHelpers)
