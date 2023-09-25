@@ -6,6 +6,7 @@ import (
 
 	"github.com/leapkit/core/db"
 	"github.com/leapkit/template/internal/config"
+	"github.com/leapkit/template/internal/migrations"
 	"github.com/leapkit/template/internal/postgres"
 
 	_ "github.com/lib/pq"
@@ -30,7 +31,7 @@ func main() {
 			return
 		}
 
-		err = db.RunMigrations(postgres.Migrations, conn)
+		err = db.RunMigrations(migrations.All, conn)
 		if err != nil {
 			fmt.Println(err)
 
