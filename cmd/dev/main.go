@@ -4,31 +4,14 @@ import (
 	"fmt"
 
 	"github.com/leapkit/core/gloves"
-	"github.com/leapkit/template/internal/config"
-
-	"github.com/paganotoni/tailo"
+	"github.com/leapkit/template/internal/app/config"
 )
 
 func main() {
 	err := gloves.Start(
 		"cmd/app/main.go",
 
-		gloves.WithRunner(func() {
-			// Run the tailo watcher so when changes are made to
-			// the html code it rebuilds css.
-
-			tailo.Watch(
-				tailo.UseInputPath("internal/web/assets/application.css"),
-				tailo.UseConfigPath("internal/config/tailwind.config.js"),
-				tailo.UseOutputPath("internal/web/public/application.css"),
-			)
-		}),
-
-		// Extensions to watch
-		gloves.WatchExtension(config.GlovesExtensionsToWatch...),
-
-		// Exclude paths from code reloading.
-		gloves.ExcludePaths(config.GlovesExcludePaths...),
+		config.GlovesOptions...,
 	)
 
 	if err != nil {

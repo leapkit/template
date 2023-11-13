@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 
 	"github.com/leapkit/core/mdfs"
-	"github.com/leapkit/template/internal/config"
+	"github.com/leapkit/template/internal/app/config"
 )
 
 var (
@@ -16,7 +16,7 @@ var (
 	// files in the public folder.
 	Folder = mdfs.New(
 		files,
-		filepath.Join("internal", "web", "public"),
+		filepath.Join("internal", "app", "public"),
 		config.Environment,
 	)
 )

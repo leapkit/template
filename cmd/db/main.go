@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/template/internal/config"
-	"github.com/leapkit/template/internal/migrations"
-	"github.com/leapkit/template/internal/postgres"
+	"github.com/leapkit/template/internal/app/config"
+	"github.com/leapkit/template/internal/app/postgres"
+	"github.com/leapkit/template/internal/app/postgres/migrations"
 
 	_ "github.com/lib/pq"
 )

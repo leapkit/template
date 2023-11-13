@@ -2,7 +2,7 @@ package postgres
 
 import (
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/template/internal/config"
+	"github.com/leapkit/template/internal/app/config"
 
 	_ "github.com/lib/pq"
 )

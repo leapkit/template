@@ -6,6 +6,8 @@ package config
 
 import (
 	"github.com/leapkit/core/envor"
+	"github.com/leapkit/core/gloves"
+	"github.com/paganotoni/tailo"
 )
 
 var (
@@ -24,6 +26,22 @@ var (
 	SessionSecret = envor.Get("SESSION_SECRET", "d720c059-9664-4980-8169-1158e167ae57")
 	SessionName   = envor.Get("SESSION_NAME", "leapkit_session")
 
-	GlovesExtensionsToWatch = []string{".go", ".env", ".json", ".html", ".js"}
-	GlovesExcludePaths      = []string{}
+	// Options for tailo, this is used to setup the tailwindcss
+	// watcher and builder.
+	TailoOptions = []tailo.Option{
+		tailo.UseInputPath("internal/assets/application.css"),
+		tailo.UseOutputPath("internal/app/public/application.css"),
+		tailo.UseConfigPath("tailwind.config.js"),
+	}
+
+	GlovesOptions = []gloves.Option{
+		gloves.WithRunner(func() {
+			// Run the tailo watcher so when changes are made to
+			// the html code it rebuilds css.
+			tailo.Watch(TailoOptions...)
+		}),
+
+		// Extensions to watch
+		gloves.WatchExtension(".go", ".env", ".json", ".html", ".js"),
+	}
 )

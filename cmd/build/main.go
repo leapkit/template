@@ -4,15 +4,12 @@ import (
 	"os"
 	"os/exec"
 
+	"github.com/leapkit/template/internal/app/config"
 	"github.com/paganotoni/tailo"
 )
 
 func main() {
-	tailo.Build(
-		tailo.UseInputPath("internal/web/assets/application.css"),
-		tailo.UseConfigPath("internal/config/tailwind.config.js"),
-		tailo.UseOutputPath("internal/web/public/application.css"),
-	)
+	tailo.Build(config.TailoOptions...)
 
 	cmd := exec.Command("go", "build")
 	cmd.Args = append(
