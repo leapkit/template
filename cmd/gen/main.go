@@ -29,6 +29,7 @@ func main() {
 			// This is the path to the migrations folder
 			db.UseMigrationFolder(filepath.Join("internal/migrations")),
 		)
+
 		if err != nil {
 			fmt.Println(err)
 
