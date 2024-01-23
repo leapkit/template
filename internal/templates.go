@@ -2,22 +2,25 @@ package internal
 
 import (
 	"embed"
-	"path"
 
 	"github.com/leapkit/core/mdfs"
-	"github.com/leapkit/template/internal/app/config"
+	"github.com/leapkit/core/render"
 )
 
 var (
-	//go:embed **/**/*.html **/*.html
+	//go:embed **/*.html **/*.html *.html
 	tmpls embed.FS
 
-	// Templates is a MDFS with the templates so we can use them in the application
+	// templates is a MDFS with the templates so we can use them in the application
 	// and read them from disk in development.
-	Templates = mdfs.New(
+	templates = mdfs.New(
 		tmpls,
-
-		path.Join("internal"),
-		config.Environment,
+		"internal",
+		Environment,
 	)
+
+	// the rendering engine for the application, this
+	// is used to render each of the HTML responses
+	// for the application.
+	renderer = render.NewEngine(templates)
 )

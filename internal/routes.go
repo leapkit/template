@@ -1,8 +1,6 @@
-package app
+package internal
 
 import (
-	"net/http"
-
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 
@@ -10,21 +8,8 @@ import (
 	"github.com/leapkit/core/server"
 	"github.com/leapkit/core/session"
 
-	"github.com/leapkit/template/internal"
-	"github.com/leapkit/template/internal/app/config"
-	"github.com/leapkit/template/internal/app/helpers"
-	"github.com/leapkit/template/internal/app/public"
 	"github.com/leapkit/template/internal/home"
-)
-
-var (
-	// the rendering engine for the application, this
-	// is used to render each of the HTML responses
-	// for the application.
-	renderer = render.NewEngine(
-		internal.Templates,
-		render.WithHelpers(helpers.All),
-	)
+	"github.com/leapkit/template/public"
 )
 
 // AddRoutes mounts the routes for the application,
@@ -37,8 +22,13 @@ func AddRoutes(r *server.Instance) error {
 	r.Use(middleware.RequestID)
 
 	// LeapKit Middleware
-	r.Use(session.Middleware(config.SessionSecret, config.SessionName))
-	r.Use(render.Middleware(renderer))
+	r.Use(session.Middleware(SessionSecret, SessionName))
+	r.Use(render.Middleware(
+		templates,
+
+		// options
+		render.WithDefaultLayout("layout.html"),
+	))
 
 	r.Route("/", func(rx chi.Router) {
 		rx.Get("/", home.Index)
@@ -46,7 +36,7 @@ func AddRoutes(r *server.Instance) error {
 
 	// Public files that include anything thats on the
 	// public folder. This is useful for files and assets.
-	r.Handle("/public/*", http.StripPrefix("/public/", http.FileServer(http.FS(public.Folder))))
+	r.Folder("/public/", public.Files)
 
 	return nil
 }

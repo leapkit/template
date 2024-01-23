@@ -4,12 +4,12 @@ import (
 	"os"
 	"os/exec"
 
-	"github.com/leapkit/template/internal/app/config"
+	"github.com/leapkit/template/internal"
 	"github.com/paganotoni/tailo"
 )
 
 func main() {
-	tailo.Build(config.TailoOptions...)
+	tailo.Build(internal.TailoOptions...)
 
 	cmd := exec.Command("go", "build")
 	cmd.Args = append(

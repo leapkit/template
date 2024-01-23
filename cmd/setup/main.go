@@ -4,13 +4,9 @@ import (
 	"fmt"
 
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/template/internal/app/config"
-	"github.com/leapkit/template/internal/app/postgres"
-	"github.com/leapkit/template/internal/app/postgres/migrations"
-
+	"github.com/leapkit/template/internal"
+	"github.com/leapkit/template/internal/migrations"
 	"github.com/paganotoni/tailo"
-
-	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -21,7 +17,7 @@ func main() {
 
 	fmt.Println("✅ Tailwind CSS setup successfully")
 
-	err = db.Create(config.DatabaseURL)
+	err = db.Create(internal.DatabaseURL)
 	if err != nil {
 		fmt.Println(err)
 
@@ -30,7 +26,7 @@ func main() {
 
 	fmt.Println("✅ Database created successfully")
 
-	conn, err := postgres.Connection()
+	conn, err := internal.Connection()
 	if err != nil {
 		fmt.Println(err)
 		return

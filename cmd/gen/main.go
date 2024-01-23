@@ -22,7 +22,7 @@ func main() {
 
 	switch os.Args[1] {
 	case "migration":
-		err := db.GenerateMigration(os.Args[2])
+		err := db.GenerateMigration(os.Args[2], db.WithMigrationFolder("internal/migrations"))
 		if err != nil {
 			fmt.Println(err)
 

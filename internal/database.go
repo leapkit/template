@@ -1,13 +1,12 @@
-package postgres
+package internal
 
 import (
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/template/internal/app/config"
 
-	_ "github.com/lib/pq"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 // Connection is the database connection builder function
 // that will be used by the application based on the driver and
 // connection string.
-var Connection = db.ConnectionFn(config.DatabaseURL)
+var Connection = db.ConnectionFn(DatabaseURL)
