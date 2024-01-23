@@ -11,6 +11,9 @@ import (
 )
 
 var (
+	AssetsFolder = "./internal/assets"
+	PublicFolder = "./public"
+
 	// TailoOptions allow to define how to compile
 	// the tailwind css files, which is the input and
 	// what will be the output.
@@ -26,8 +29,7 @@ var (
 		// Run the tailo watcher so when changes are made to
 		// the html code it rebuilds css.
 		gloves.WithRunner(tailo.WatcherFn(TailoOptions...)),
-		gloves.WithRunner(assets.Watcher("./internal/assets", "./public")),
-
-		gloves.WatchExtension(".go", ".html", ".css", ".js"),
+		gloves.WithRunner(assets.Watcher(AssetsFolder, PublicFolder)),
+		gloves.WatchExtension(".go", ".css", ".js"),
 	}
 )
