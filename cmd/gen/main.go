@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/leapkit/core/db"
+	"github.com/leapkit/core/db/migrations"
 )
 
 func main() {
@@ -27,7 +28,7 @@ func main() {
 			os.Args[2], // name of the migration
 
 			// This is the path to the migrations folder
-			db.UseMigrationFolder(filepath.Join("internal/migrations")),
+			migrations.UseMigrationFolder(filepath.Join("internal", "migrations")),
 		)
 
 		if err != nil {

@@ -9,4 +9,4 @@ import (
 // Connection is the database connection builder function
 // that will be used by the application based on the driver and
 // connection string.
-var Connection = db.ConnectionFn(DatabaseURL)
+var Connection = db.ConnectionFn(DatabaseURL, db.WithDriver("sqlite3"))

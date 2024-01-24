@@ -4,7 +4,7 @@ go 1.21.0
 
 require (
 	github.com/go-chi/chi/v5 v5.0.10
-	github.com/leapkit/core v1.2.9
+	github.com/leapkit/core v1.2.10
 	github.com/mattn/go-sqlite3 v1.14.19
 	github.com/paganotoni/tailo v1.0.3
 )
