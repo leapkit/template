@@ -4,17 +4,12 @@ LeapKit is a template for building web applications with Go, HTMX and Tailwind C
 
 ### Getting started
 
-Install Gonew:
+Use this template by using gonew:
 
 ```
-go install rsc.io/tmp/gonew@latest 
+go run rsc.io/tmp/gonew@latest github.com/leapkit/template@latest super-app
 ```
 
-Create a new project from template:
-
-```
-gonew github.com/leapkit/template@latest github.com/your/app 
-```
 ⚠️ Important: Gonew does not support modules without github.com or similar use github.com/your/app as the pattern for the module path of the newly created project.
 
 ### Setup
@@ -33,5 +28,5 @@ To run the application in development mode execute:
 ```
 go run ./cmd/dev
 ```
-And open http://localhost:3000 in your browser.
 
+And open http://localhost:3000 in your browser.
