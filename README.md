@@ -29,4 +29,4 @@ To run the application in development mode execute:
 go run ./cmd/dev
 ```
 
-And open http://localhost:3000 in your browser.
+And open `http://localhost:3000` in your browser.
