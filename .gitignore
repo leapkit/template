@@ -1,3 +1,5 @@
-internal/web/public/application.css
 bin/*
-public/*.(css,js)
+
+# Ignore all css and js files in the public directory
+public/*.css
+public/*.js
