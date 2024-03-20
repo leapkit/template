@@ -12,8 +12,8 @@ github.com/gorilla/sessions v1.2.1 h1:DHd3rPN5lE3Ts3D8rKkQ8x/0kqfeNmBAaiSi+o7Fsg
 github.com/gorilla/sessions v1.2.1/go.mod h1:dk2InVEVJ0sfLlnXv9EAgkf6ecYs/i80K/zI+bUmuGM=
 github.com/jmoiron/sqlx v1.3.5 h1:vFFPA71p1o5gAeqtEAwLU4dnX2napprKtHr7PYIcN3g=
 github.com/jmoiron/sqlx v1.3.5/go.mod h1:nRVWtLre0KfCLJvgxzCsLVMogSvQ1zNJtpYr2Ccp0mQ=
-github.com/leapkit/core v1.2.13-0.20240320194419-2b7b445ffbea h1:z9/2MADAiD6H6uTq4W9i1uViSiFG71+B8o1T65cPaJA=
-github.com/leapkit/core v1.2.13-0.20240320194419-2b7b445ffbea/go.mod h1:1StNnBrBq0uYMnNI3P+YAgiqE2oXzLs86cXFhgDuJZk=
+github.com/leapkit/core v1.2.13 h1:gHwcgBaoWS84+CFcYT9d3kxSw6eCrV68N33KjhbyzzY=
+github.com/leapkit/core v1.2.13/go.mod h1:1StNnBrBq0uYMnNI3P+YAgiqE2oXzLs86cXFhgDuJZk=
 github.com/lib/pq v1.2.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/lib/pq v1.10.9 h1:YXG7RB+JIjhP29X+OtkiDnYaXQwpS4JEWq7dtCCRUEw=
 github.com/lib/pq v1.10.9/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
