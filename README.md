@@ -6,7 +6,7 @@ LeapKit is a template for building web applications with Go, HTMX and Tailwind C
 
 Use this template by using gonew:
 
-```
+```sh
 go run rsc.io/tmp/gonew@latest github.com/leapkit/template@latest super-app
 ```
 
@@ -16,7 +16,7 @@ go run rsc.io/tmp/gonew@latest github.com/leapkit/template@latest super-app
 
 Install dependencies:
 
-```
+```sh
 go mod download
 go run ./cmd/setup
 ```
@@ -25,7 +25,7 @@ go run ./cmd/setup
 
 To run the application in development mode execute:
 
-```
+```sh
 go run ./cmd/dev
 ```
 
