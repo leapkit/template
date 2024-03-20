@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 
-	"github.com/leapkit/core/assets"
 	"github.com/leapkit/core/db"
 	"github.com/leapkit/template/internal"
 	"github.com/leapkit/template/internal/migrations"
@@ -11,22 +10,14 @@ import (
 )
 
 func main() {
-	// Setup public folder.
-	err := assets.Embed(internal.AssetsFolder, internal.PublicFolder)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fmt.Println("✅ Public folder Generated")
-
 	// Setup tailo to compile tailwind css.
-	err = tailo.Setup()
+	err := tailo.Setup()
 	if err != nil {
 		fmt.Println(err)
 	}
+
 
 	fmt.Println("✅ Tailwind CSS setup successfully")
-
 	err = db.Create(internal.DatabaseURL)
 	if err != nil {
 		fmt.Println(err)
@@ -35,8 +26,7 @@ func main() {
 	}
 
 	fmt.Println("✅ Database created successfully")
-
-	conn, err := internal.Connection()
+	conn, err := internal.DB()
 	if err != nil {
 		fmt.Println(err)
 		return
