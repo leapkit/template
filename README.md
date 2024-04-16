@@ -13,8 +13,6 @@ Use this template by using gonew:
 go run rsc.io/tmp/gonew@latest github.com/leapkit/template@v1.1.4 superapp
 ```
 
-⚠️ Important: Gonew does not support modules without github.com or similar use github.com/your/app as the pattern for the module path of the newly created project.
-
 ### Setup
 
 Install dependencies:
@@ -27,7 +25,6 @@ go run ./cmd/setup
 ### Running the application
 
 To run the application in development mode execute:
-
 
 ```sh
 go run ./cmd/dev
