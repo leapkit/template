@@ -6,6 +6,11 @@ import (
 
 	"github.com/leapkit/template/internal"
 	"github.com/paganotoni/tailo"
+
+	// Load environment variables
+	_ "github.com/leapkit/core/envload"
+	// sqlite3 driver
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {

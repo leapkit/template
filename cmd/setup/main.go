@@ -7,6 +7,11 @@ import (
 	"github.com/leapkit/template/internal"
 	"github.com/leapkit/template/internal/migrations"
 	"github.com/paganotoni/tailo"
+
+	// Load environment variables
+	_ "github.com/leapkit/core/envload"
+	// sqlite3 driver
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
@@ -15,7 +20,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 
 	fmt.Println("✅ Tailwind CSS setup successfully")
 	err = db.Create(internal.DatabaseURL)

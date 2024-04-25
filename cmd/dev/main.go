@@ -5,6 +5,9 @@ import (
 
 	"github.com/leapkit/core/gloves"
 	"github.com/leapkit/template/internal"
+
+	// Load environment variables
+	_ "github.com/leapkit/core/envload"
 )
 
 func main() {

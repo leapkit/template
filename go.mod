@@ -5,7 +5,7 @@ go 1.22.0
 toolchain go1.22.1
 
 require (
-	github.com/leapkit/core v1.2.15
+	github.com/leapkit/core v1.3.0
 	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/paganotoni/tailo v1.0.3
 )
