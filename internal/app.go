@@ -1,11 +1,12 @@
 package internal
 
 import (
+	"cmp"
 	"embed"
+	"os"
 
 	"github.com/leapkit/core/assets"
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/core/envor"
 	"github.com/leapkit/core/gloves"
 	"github.com/leapkit/core/render"
 	"github.com/leapkit/core/server"
@@ -13,11 +14,7 @@ import (
 	"github.com/leapkit/template/internal/home"
 	"github.com/leapkit/template/public"
 	"github.com/paganotoni/tailo"
-
-	_ "github.com/mattn/go-sqlite3"
 )
-
-
 
 var (
 	//go:embed **/*.html **/*.html *.html
@@ -48,25 +45,22 @@ var (
 	}
 
 	// DatabaseURL to connect and interact with our database instance.
-	DatabaseURL = envor.Get("DATABASE_URL", "leapkit.db")
+	DatabaseURL = cmp.Or(os.Getenv("DATABASE_URL"), "leapkit.db")
 
 	// DB is the database connection builder function
 	// that will be used by the application based on the driver and
 	// connection string.
- 	DB = db.ConnectionFn(DatabaseURL, db.WithDriver("sqlite3"))
+	DB = db.ConnectionFn(DatabaseURL, db.WithDriver("sqlite3"))
 )
-
-
 
 // AddRoutes mounts the routes for the application,
 // it assumes that the base services have been injected
 // in the creation of the server instance.
 func AddRoutes(r server.Router) error {
-
 	// LeapKit Middleware
 	r.Use(session.Middleware(
-		envor.Get("SESSION_SECRET", "d720c059-9664-4980-8169-1158e167ae57"),
-		envor.Get("SESSION_NAME", "leapkit_session"),
+		cmp.Or(os.Getenv("SESSION_SECRET"), "d720c059-9664-4980-8169-1158e167ae57"),
+		cmp.Or(os.Getenv("SESSION_NAME"), "leapkit_session"),
 	))
 
 	r.Use(render.Middleware(
