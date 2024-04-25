@@ -18,5 +18,3 @@ require (
 	github.com/jmoiron/sqlx v1.3.5 // indirect
 	golang.org/x/sys v0.16.0 // indirect
 )
-
-replace github.com/leapkit/core => ../core
