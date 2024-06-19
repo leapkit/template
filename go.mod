@@ -3,7 +3,7 @@ module github.com/leapkit/template
 go 1.22.0
 
 require (
-	github.com/leapkit/core v1.4.2-0.20240619223000-f651ee4c5c2a
+	github.com/leapkit/core v1.5.0
 	github.com/mattn/go-sqlite3 v1.14.22
 	github.com/paganotoni/tailo v1.0.3
 )
