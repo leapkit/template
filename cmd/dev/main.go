@@ -19,11 +19,12 @@ func main() {
 		// the html code it rebuilds css.
 		rebuilder.WithRunner(tailo.WatcherFn(internal.TailoOptions...)),
 
+		// Run the assets watcher.
 		rebuilder.WithRunner(internal.Assets.Watch),
 		rebuilder.WatchExtension(".go", ".css", ".js"),
 	)
 
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("error starting the dev", err)
 	}
 }

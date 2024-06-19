@@ -2,8 +2,6 @@ module github.com/leapkit/template
 
 go 1.22.0
 
-toolchain go1.22.1
-
 require (
 	github.com/leapkit/core v1.4.2-0.20240619223000-f651ee4c5c2a
 	github.com/mattn/go-sqlite3 v1.14.22

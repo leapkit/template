@@ -28,6 +28,6 @@ func main() {
 	fmt.Println("Server started at", s.Addr())
 	err := http.ListenAndServe(s.Addr(), s.Handler())
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("[error] starting app:", err)
 	}
 }
