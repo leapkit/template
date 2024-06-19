@@ -7,7 +7,6 @@ import (
 
 	"github.com/leapkit/core/assets"
 	"github.com/leapkit/core/db"
-	"github.com/leapkit/core/gloves"
 	"github.com/leapkit/core/render"
 	"github.com/leapkit/core/server"
 	"github.com/leapkit/core/session"
@@ -32,16 +31,6 @@ var (
 		tailo.UseInputPath("internal/assets/application.css"),
 		tailo.UseOutputPath("public/application.css"),
 		tailo.UseConfigPath("tailwind.config.js"),
-	}
-
-	// GlovesOptions are the options that will be used by the gloves
-	// tool to hot reload the application.
-	GlovesOptions = []gloves.Option{
-		// Run the tailo watcher so when changes are made to
-		// the html code it rebuilds css.
-		gloves.WithRunner(tailo.WatcherFn(TailoOptions...)),
-		gloves.WithRunner(Assets.Watch),
-		gloves.WatchExtension(".go", ".css", ".js"),
 	}
 
 	// DatabaseURL to connect and interact with our database instance.
