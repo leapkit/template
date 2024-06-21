@@ -41,3 +41,9 @@ go run ./cmd/dev
 ```
 
 And open `http://localhost:3000` in your browser.
+
+### Generating a migration
+
+```sh
+go run github.com/leapkit/core/cmd/generate@latest migration
+```
