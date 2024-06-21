@@ -7,7 +7,12 @@ RUN go mod download
 
 ADD . .
 RUN go build -o bin/db ./cmd/db
-RUN go run ./cmd/build
+
+# Building TailwindCSS with tailo
+RUN go run github.com/paganotoni/tailo/cmd/build@a4899cd
+
+# Building the app
+RUN go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
 
 FROM alpine
 RUN apk add --no-cache tzdata ca-certificates

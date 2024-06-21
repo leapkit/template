@@ -12,7 +12,6 @@ import (
 	"github.com/leapkit/core/session"
 	"github.com/leapkit/template/internal/home"
 	"github.com/leapkit/template/public"
-	"github.com/paganotoni/tailo"
 )
 
 var (
@@ -23,15 +22,6 @@ var (
 	// it allows to watch for changes and reload the assets
 	// when changes are made.
 	Assets = assets.NewManager(public.Files)
-
-	// TailoOptions allow to define how to compile
-	// the tailwind css files, which is the input and
-	// what will be the output.
-	TailoOptions = []tailo.Option{
-		tailo.UseInputPath("internal/assets/application.css"),
-		tailo.UseOutputPath("public/application.css"),
-		tailo.UseConfigPath("tailwind.config.js"),
-	}
 
 	// DatabaseURL to connect and interact with our database instance.
 	DatabaseURL = cmp.Or(os.Getenv("DATABASE_URL"), "leapkit.db")

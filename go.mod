@@ -5,7 +5,7 @@ go 1.22.0
 require (
 	github.com/leapkit/core v1.5.0
 	github.com/mattn/go-sqlite3 v1.14.22
-	github.com/paganotoni/tailo v1.0.3
+	github.com/paganotoni/tailo v1.0.5
 )
 
 require (

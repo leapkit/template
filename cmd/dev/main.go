@@ -17,7 +17,11 @@ func main() {
 
 		// Run the tailo watcher so when changes are made to
 		// the html code it rebuilds css.
-		rebuilder.WithRunner(tailo.WatcherFn(internal.TailoOptions...)),
+		rebuilder.WithRunner(tailo.WatcherFn(
+			tailo.UseInputPath("internal/assets/application.css"),
+			tailo.UseOutputPath("public/application.css"),
+			tailo.UseConfigPath("tailwind.config.js"),
+		)),
 
 		// Run the assets watcher.
 		rebuilder.WithRunner(internal.Assets.Watch),

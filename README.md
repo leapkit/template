@@ -22,6 +22,16 @@ go mod download
 go run ./cmd/setup
 ```
 
+### Building the application
+
+```sh
+# Building TailwindCSS with tailo
+> go run github.com/paganotoni/tailo/cmd/build@a4899cd
+
+# Building the app
+> go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
+```
+
 ### Running the application
 
 To run the application in development mode execute:
