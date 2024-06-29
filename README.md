@@ -1,3 +1,4 @@
+⚠️ Important: Leapkit now uses the leapkit/leapkit monorepo. That's where this framework will advance. you can find the template there.
 ## LeapKit Template
 
 <img width="300" alt="logo" src="https://github.com/LeapKit/template/assets/645522/d5bcb8ed-c763-4b39-8cfb-aed694b87646">
