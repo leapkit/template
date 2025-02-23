@@ -44,7 +44,7 @@ func New() Server {
 			cmp.Or(os.Getenv("SESSION_NAME"), "leapkit_session"),
 		),
 
-		server.WithAssets(assets.Files, "/public/"),
+		server.WithAssets(assets.Files, "/internal/system/assets"),
 	)
 
 	r.Use(render.Middleware(

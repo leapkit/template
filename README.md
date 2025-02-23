@@ -1,27 +1,23 @@
 ## LeapKit Template
 
-<img width="300" alt="logo" src="https://go.leapkit.dev/template/assets/645522/d5bcb8ed-c763-4b39-8cfb-aed694b87646">
-<br><br>
+This is the LeapKit template for building web applications with Go, HTMX and Tailwind CSS.
 
-This is the  LeapKit template for building web applications with Go, HTMX and Tailwind CSS. It integrates useful features such as hot code reload and css recompiling.
-
-### Getting started
-
-Install dependencies:
+### Setup tools
 
 ```sh
+go tool tailo download
 go mod download
-go run ./cmd/setup
 ```
 
 ### Building the application
+The first step is to build the TailwindCSS assets:
 
 ```sh
-# Building TailwindCSS with tailo
-> go run github.com/paganotoni/tailo/cmd/build@v1.0.8
+go tool tailo -i internal/system/assets/tailwind.css -o internal/system/assets/application.css
+```
 
-# Building the app
-> go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
+```sh
+go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
 ```
 
 ### Running the application
@@ -29,7 +25,7 @@ go run ./cmd/setup
 To run the application in development mode execute:
 
 ```sh
-go run go.leapkit.dev/tools/dev
+go tool dev
 ```
 
 And open `http://localhost:3000` in your browser.
@@ -37,5 +33,5 @@ And open `http://localhost:3000` in your browser.
 ### Generating a migration
 
 ```sh
-> kit g migration [name]
+> go tool db generate_migration [name]
 ```

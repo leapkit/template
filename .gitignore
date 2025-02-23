@@ -1,5 +1,4 @@
 bin/*
 
-# Ignore all css and js files in the public directory
-public/*.css
-public/*.js
+# Ignore the built version of the application.css file
+internal/system/assets/application.css
