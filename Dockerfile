@@ -14,10 +14,10 @@ RUN go tool tailo download -v v4.0.6 --musl
 RUN go tool tailo --i internal/system/assets/tailwind.css -o internal/system/assets/application.css
 
 # Building the migrate command
-RUN go build -tags osusergo,netgo -buildvcs=false -o bin/migrate ./cmd/migrate
+RUN go build -tags osusergo,netgo -o bin/migrate ./cmd/migrate
 
 # Building the app
-RUN go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
+RUN go build -tags osusergo,netgo -o bin/app ./cmd/app
 
 FROM alpine
 RUN apk add --no-cache tzdata ca-certificates
