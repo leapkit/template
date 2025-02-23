@@ -2,36 +2,39 @@
 
 This is the LeapKit template for building web applications with Go, HTMX and Tailwind CSS.
 
-### Setup tools
+### Getting Started
+#### Setup tools
+
+To get going make sure you have Go 1.24 installed. Once you have Go installed, you can download the required dependencies:
 
 ```sh
-go tool tailo download
 go mod download
 ```
 
-### Building the application
-The first step is to build the TailwindCSS assets:
+#### Running the application
 
-```sh
-go tool tailo -i internal/system/assets/tailwind.css -o internal/system/assets/application.css
-```
-
-```sh
-go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
-```
-
-### Running the application
-
-To run the application in development mode execute:
+To run the application while in development please use the following command:
 
 ```sh
 go tool dev
 ```
 
-And open `http://localhost:3000` in your browser.
+This will use the `dev` tool to read the Procfile at the root of the project and start the application. It will automatically restart the app process when changes are detected in the .go files. The rest of the processes defined in the file will be running in parallel.
+Once the application is running, you can access it at http://localhost:3000.
 
-### Generating a migration
+
+### Building the application
+
+One important part of the build process is to build the TailwindCSS styles. The tailo tool will take care of this.
 
 ```sh
-> go tool db generate_migration [name]
+go tool tailo -i internal/system/assets/tailwind.css -o internal/system/assets/application.css
 ```
+
+Then building the application can be done with the following command:
+
+```sh
+go build -o bin/app ./cmd/app
+```
+
+That will create a binary file named `app` in the `bin` folder at the root of the project.
