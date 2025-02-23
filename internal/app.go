@@ -3,60 +3,56 @@ package internal
 import (
 	"cmp"
 	"embed"
+	"net/http"
 	"os"
 
-	"github.com/leapkit/core/assets"
-	"github.com/leapkit/core/db"
-	"github.com/leapkit/core/render"
-	"github.com/leapkit/core/server"
-	"github.com/leapkit/core/session"
-	"github.com/leapkit/template/internal/home"
-	"github.com/leapkit/template/public"
+	"github.com/leapkit/leapkit/template/internal/home"
+	"github.com/leapkit/leapkit/template/internal/system/assets"
+	"go.leapkit.dev/core/db"
+	"go.leapkit.dev/core/render"
+	"go.leapkit.dev/core/server"
 )
 
 var (
 	//go:embed **/*.html **/*.html *.html
 	tmpls embed.FS
 
-	// Assets is the manager for the public assets
-	// it allows to watch for changes and reload the assets
-	// when changes are made.
-	Assets = assets.NewManager(public.Files)
-
-	// DatabaseURL to connect and interact with our database instance.
-	DatabaseURL = cmp.Or(os.Getenv("DATABASE_URL"), "leapkit.db")
-
 	// DB is the database connection builder function
 	// that will be used by the application based on the driver and
 	// connection string.
-	DB = db.ConnectionFn(DatabaseURL, db.WithDriver("sqlite3"))
+	DB = db.ConnectionFn(
+		cmp.Or(os.Getenv("DATABASE_URL"), "database.db?_timeout=5000&_sync=1"),
+		db.WithDriver("sqlite3"),
+	)
 )
 
-// AddRoutes mounts the routes for the application,
-// it assumes that the base services have been injected
-// in the creation of the server instance.
-func AddRoutes(r server.Router) error {
-	// LeapKit Middleware
-	r.Use(session.Middleware(
-		cmp.Or(os.Getenv("SESSION_SECRET"), "d720c059-9664-4980-8169-1158e167ae57"),
-		cmp.Or(os.Getenv("SESSION_NAME"), "leapkit_session"),
-	))
+// Server interface exposes the methods
+// needed to start the server in the cmd/app package
+type Server interface {
+	Addr() string
+	Handler() http.Handler
+}
+
+func New() Server {
+	// Creating a new server instance with the
+	// default host and port values.
+	r := server.New(
+		server.WithHost(cmp.Or(os.Getenv("HOST"), "0.0.0.0")),
+		server.WithPort(cmp.Or(os.Getenv("PORT"), "3000")),
+		server.WithSession(
+			cmp.Or(os.Getenv("SESSION_SECRET"), "d720c059-9664-4980-8169-1158e167ae57"),
+			cmp.Or(os.Getenv("SESSION_NAME"), "leapkit_session"),
+		),
+
+		server.WithAssets(assets.Files, "/public/"),
+	)
 
 	r.Use(render.Middleware(
 		render.TemplateFS(tmpls, "internal"),
-
 		render.WithDefaultLayout("layout.html"),
-		render.WithHelpers(render.AllHelpers),
-		render.WithHelpers(map[string]any{
-			"assetPath": Assets.PathFor,
-		}),
 	))
 
 	r.HandleFunc("GET /{$}", home.Index)
 
-	// Mounting the assets manager at the end of the routes
-	// so that it can serve the public assets.
-	r.HandleFunc(Assets.HandlerPattern(), Assets.HandlerFn)
-
-	return nil
+	return r
 }

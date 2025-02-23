@@ -1,30 +1,19 @@
 package main
 
 import (
-	"cmp"
 	"fmt"
 	"net/http"
-	"os"
 
-	"github.com/leapkit/core/server"
-	"github.com/leapkit/template/internal"
+	"github.com/leapkit/leapkit/template/internal"
 
 	// Load environment variables
-	_ "github.com/leapkit/core/tools/envload"
+	_ "go.leapkit.dev/core/tools/envload"
 	// sqlite3 driver
 	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	s := server.New(
-		server.WithHost(cmp.Or(os.Getenv("HOST"), "0.0.0.0")),
-		server.WithPort(cmp.Or(os.Getenv("PORT"), "3000")),
-	)
-
-	if err := internal.AddRoutes(s); err != nil {
-		os.Exit(1)
-	}
-
+	s := internal.New()
 	fmt.Println("Server started at", s.Addr())
 	err := http.ListenAndServe(s.Addr(), s.Handler())
 	if err != nil {

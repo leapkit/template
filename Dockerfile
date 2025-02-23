@@ -1,25 +1,29 @@
-FROM golang:1.22-alpine as builder
-RUN apk --update add build-base
+FROM golang:1.22-alpine AS builder
 
 WORKDIR /src/app
 ADD go.mod .
 RUN go mod download
 
 ADD . .
-RUN go build -o bin/db ./cmd/db
 
-# Building TailwindCSS with tailo
-RUN go run github.com/paganotoni/tailo/cmd/build@a4899cd
+# Copy everything in assets to the public folder
+RUN cp internal/assets/* public/
+
+# Building the migrate command
+RUN go build -tags osusergo,netgo -buildvcs=false -o bin/migrate ./cmd/migrate
 
 # Building the app
 RUN go build -tags osusergo,netgo -buildvcs=false -o bin/app ./cmd/app
 
 FROM alpine
 RUN apk add --no-cache tzdata ca-certificates
+
 WORKDIR /bin/
 
 # Copying binaries
 COPY --from=builder /src/app/bin/app .
-COPY --from=builder /src/app/bin/db .
+COPY --from=builder /src/app/bin/migrate .
 
-CMD /bin/app
+# Specifying the shell to use
+SHELL ["/bin/ash", "-c"]
+CMD migrate && app
