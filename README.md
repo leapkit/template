@@ -29,7 +29,7 @@ go run ./cmd/setup
 To run the application in development mode execute:
 
 ```sh
-> kit dev
+go run go.leapkit.dev/tools/dev
 ```
 
 And open `http://localhost:3000` in your browser.
