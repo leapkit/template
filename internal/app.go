@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	//go:embed **/*.html **/*.html *.html
+	//go:embed **/*.html **/*.html
 	tmpls embed.FS
 
 	// DB is the database connection builder function
@@ -49,7 +49,7 @@ func New() Server {
 
 	r.Use(render.Middleware(
 		render.TemplateFS(tmpls, "internal"),
-		render.WithDefaultLayout("layout.html"),
+		render.WithDefaultLayout("system/layout.html"),
 	))
 
 	r.HandleFunc("GET /{$}", home.Index)
