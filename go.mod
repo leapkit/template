@@ -1,4 +1,4 @@
-module github.com/leapkit/leapkit/template
+module go.leapkit.dev/template
 
 go 1.22
 

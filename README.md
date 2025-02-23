@@ -1,6 +1,6 @@
 ## LeapKit Template
 
-<img width="300" alt="logo" src="https://github.com/leapkit/leapkit/template/assets/645522/d5bcb8ed-c763-4b39-8cfb-aed694b87646">
+<img width="300" alt="logo" src="https://go.leapkit.dev/template/assets/645522/d5bcb8ed-c763-4b39-8cfb-aed694b87646">
 <br><br>
 
 This is the  LeapKit template for building web applications with Go, HTMX and Tailwind CSS. It integrates useful features such as hot code reload and css recompiling.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/leapkit/leapkit/template/internal"
+	"go.leapkit.dev/template/internal"
 
 	// Load environment variables
 	_ "go.leapkit.dev/core/tools/envload"

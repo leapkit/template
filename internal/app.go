@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/leapkit/leapkit/template/internal/home"
-	"github.com/leapkit/leapkit/template/internal/system/assets"
 	"go.leapkit.dev/core/db"
 	"go.leapkit.dev/core/render"
 	"go.leapkit.dev/core/server"
+	"go.leapkit.dev/template/internal/home"
+	"go.leapkit.dev/template/internal/system/assets"
 )
 
 var (
