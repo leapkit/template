@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log/slog"
 
 	"go.leapkit.dev/template/internal"
 	"go.leapkit.dev/template/internal/migrations"
@@ -14,13 +14,13 @@ import (
 // with the latest database schema migrator. which can be invoked
 // by running `migrate`.
 func main() {
-	conn, err := internal.DB()
+	conn, err := internal.DBFn()
 	if err != nil {
-		fmt.Println("Error connecting to the database: ", err)
+		slog.Error("connecting to the database", "error", err)
 	}
 
 	err = db.RunMigrations(migrations.All, conn)
 	if err != nil {
-		fmt.Println("Error running migrations: ", err)
+		slog.Error("running migrations", "error", err)
 	}
 }
