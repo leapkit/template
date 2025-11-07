@@ -18,5 +18,7 @@ func main() {
 	slog.Info("server started", "addr", addr)
 
 	err := http.ListenAndServe(addr, server)
+	// http.ListenAndServe always returns a non-nil error
+	// according to its documentation.
 	slog.Error("server stopped", "error", err)
 }
