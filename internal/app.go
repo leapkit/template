@@ -18,16 +18,20 @@ var (
 	//go:embed **/*.html **/*.html
 	tmpls embed.FS
 
-	// dbURL is the database connection string
-	dbURL = cmp.Or(os.Getenv("DATABASE_URL"), "database.db?_timeout=5000&_sync=1")
-
 	// DBFn is the database connection builder function
 	// that will be used by the application based on the driver and
 	// connection string.
-	DBFn = db.ConnectionFn(dbURL, db.WithDriver("sqlite3"))
+	DBFn = db.ConnectionFn(
+		cmp.Or(os.Getenv("DATABASE_URL"), "database.db"),
 
-	// Server configuration variables loaded from the environment
-	// or default values.
+		db.WithDriver("sqlite3"),
+		db.Params(
+			"_timeout", "5000",
+			"_sync", "1",
+		),
+	)
+
+	// Server configuration variables loaded from
 	host          = cmp.Or(os.Getenv("HOST"), "0.0.0.0")
 	port          = cmp.Or(os.Getenv("PORT"), "3000")
 	sessionSecret = cmp.Or(os.Getenv("SESSION_SECRET"), "d720c059-9664-4980-8169-1158e167ae57")
@@ -57,7 +61,6 @@ func New() (http.Handler, string) {
 
 	// Defining the routes in the application.
 	r.HandleFunc("GET /{$}", home.Index)
-	// Add more routes here...
 
 	return r.Handler(), r.Addr()
 }
