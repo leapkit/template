@@ -26,8 +26,14 @@ var (
 
 		db.WithDriver("sqlite3"),
 		db.Params(
-			"_timeout", "5000",
+			"_busy_timeout", "5000",
+			"_journal_mode", "WAL",
 			"_sync", "1",
+			"_cache_size", "8192",
+			"_txlock", "deferred",
+
+			// journal_size_limit
+			// mmap_size
 		),
 	)
 
